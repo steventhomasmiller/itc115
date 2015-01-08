@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.127+/Users/steve456millerhall/Documents/itc115/.metadata/.plugins/org.eclipse.jdt.core
 84777399.index
 3321539481.index
@@ -21,3 +22,10 @@ INDEX VERSION 1.127+/Users/steve456millerhall/Documents/itc115/.metadata/.plugin
 1833648217.index
 770573466.index
 1819685514.index
+=======
+INDEX VERSION 1.127+C:\Users\smiller\Documents\GitHub\itc115\.metadata\.plugins\org.eclipse.jdt.core
+1041056415.index
+3738582126.index
+1818178803.index
+2485930248.index
+>>>>>>> FETCH_HEAD

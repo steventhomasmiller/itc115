@@ -21,7 +21,7 @@ public class Program {
 	}
 	
 	@SuppressWarnings("unused")
-	private void createArrays() //create two integers
+	private void createArrays()
 	{
 		int[] smaller = new int[SIZE];
 		int[] larger = new int[SIZE];
@@ -64,10 +64,8 @@ public class Program {
 		while(x<small.length) //length (size) of array
 		{
 			if(large[x] != 0)
-			{
 				System.out.println(large[x]);
 				x++;
-			}
 		}
 	}
 

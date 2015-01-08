@@ -7,7 +7,7 @@ public class Program {
 	 * Steve Miller, 1/7/15 */
 	
 	final int SIZE=50; //loops through 50 times declare literal string as constant; makes it more readable
-	final int MAXRANDOM=500; //"final"=constant
+	final int MAXRANDOM=500;
 	public static void main(String[] args) {
 		Program p = new Program(); //Always match class name
 		p.createArrays();
@@ -21,7 +21,7 @@ public class Program {
 	}
 	
 	@SuppressWarnings("unused")
-	private void createArrays() //create two integers
+	private void createArrays()
 	{
 		int[] smaller = new int[SIZE];
 		int[] larger = new int[SIZE];
@@ -64,10 +64,8 @@ public class Program {
 		while(x<small.length) //length (size) of array
 		{
 			if(large[x] != 0)
-			{
 				System.out.println(large[x]);
 				x++;
-			}
 		}
 	}
 

@@ -1,0 +1,31 @@
+package com.spconger.LoopsAndArrays2;
+
+import java.util.Random;
+
+public class Program {
+	final int SIZE=50; //declare literal string as constant; makes it more readable
+	final int MAXRANDOM=500;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private int getRandom()
+	{
+		Random r = new Random();
+		int number=r.nextInt(MAXRANDOM);
+		return number;
+	}
+	
+	private void createArrays()
+	{
+		int[] smaller = new int[SIZE];
+		int[] larger = new int[SIZE];
+	}
+	
+	private void populateArray(int[] small, int[] large)
+	{
+		
+	}
+
+}

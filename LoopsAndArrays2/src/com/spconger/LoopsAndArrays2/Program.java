@@ -1,4 +1,4 @@
-package com.spconger.LoopsAndArrays2;
+package com.spconger.LoopuDoopu;
 
 import java.util.Random;
 
@@ -20,7 +20,7 @@ public class Program {
 		return number;
 	}
 	
-	@SuppressWarnings("unused")
+	//@SuppressWarnings("unused")
 	private void createArrays() //create two integers
 	{
 		int[] smaller = new int[SIZE];

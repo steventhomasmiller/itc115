@@ -9,8 +9,8 @@ public class Program {
 	Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//ArrayList<String> names = new ArrayList<String>();
+		/*This class consists of arrays, ifs and loops 
+	 	* Steve Miller, 1/7/15 */
 		Program p = new Program();
 		p.twoDimensionalArray(); //calls array
 		

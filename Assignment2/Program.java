@@ -19,13 +19,13 @@ public class Program {
 	private int getRandom()
 	{
 		Random r = new Random();
-		int number=r.nextInt(1000);
+		int number=r.nextInt(5);
 		return number;
 	}
 	
 	private void guessingGame()
 	{
-		System.out.println("Guess a number between 1 and 1000");
+		System.out.println("Guess a number between 0 and 1000");
 		
 		do
 		{
@@ -36,11 +36,8 @@ public class Program {
 			if (guess == guessNumber)
 			{
 				correct = true;
-				System.out.println("That is the number.");
-				System.out.println("The number was" + guessNumber);
-				System.out.println("Play again? Y/N");
-//				String play = nextString.playAgain(); //not sure this is right
-
+				System.out.println("The number was " + guessNumber);
+				playAgain();
 			}
 			else if (guess < guessNumber)
 			{
@@ -51,20 +48,22 @@ public class Program {
 				System.out.println("Your guess is too high.");
 			}
 		} while (correct == false && triesNumber <= 10);
-		System.out.println("You've exceeded the acceptable number of guesses.");
+		//System.out.println("You've exceeded the acceptable number of guesses.");
 		
 	}
 	
-//	private void playAgain()
-//	{
-//		if (play == "y" || "yes")
-//		{
-//			guessingGame();
-//		}
-//		else
-//		{
-//			System.out.println("Very well, then. You may leave.");
-//		}
-//	}
+	private void playAgain()
+	{
+		System.out.println("Would you like to play again? Y or N");
+		String play = scan.nextLine();
+		if (play == "y")
+		{
+			guessingGame();
+		}
+		else if (play == "n")
+		{
+			System.out.println("Bugger off, then!");
+		}
+	}
 
 }

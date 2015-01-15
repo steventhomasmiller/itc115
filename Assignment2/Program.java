@@ -8,7 +8,6 @@ public class Program {
 	
 	int triesNumber = 0;
 	int guess;
-	//String play;
 	boolean correct = false;
 
 	public static void main(String[] args) {
@@ -19,7 +18,7 @@ public class Program {
 	private int getRandom()
 	{
 		Random r = new Random();
-		int number=r.nextInt(5);
+		int number=r.nextInt(1000);
 		return number;
 	}
 	
@@ -32,6 +31,7 @@ public class Program {
 			guess = scan.nextInt();
 			triesNumber++;
 			int guessNumber = getRandom();
+			
 
 			if (guess == guessNumber)
 			{
@@ -47,7 +47,11 @@ public class Program {
 			{
 				System.out.println("Your guess is too high.");
 			}
-		} while (correct == false && triesNumber <= 10);
+			
+			if (triesNumber > 10)
+				System.out.println("Time's up!");
+			
+		} while (correct == false);
 		//System.out.println("You've exceeded the acceptable number of guesses.");
 		
 	}

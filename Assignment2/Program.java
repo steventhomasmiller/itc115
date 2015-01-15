@@ -8,7 +8,7 @@ public class Program {
 	
 	int triesNumber = 0;
 	int guess;
-	String play;
+	//String play;
 	boolean correct = false;
 
 	public static void main(String[] args) {

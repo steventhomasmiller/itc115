@@ -1,4 +1,5 @@
-package com.spconger.Assignment2;
+package com.spconger.VehicleExample;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,27 +8,28 @@ public class Program {
 	Scanner scan = new Scanner(System.in);
 	
 	int triesNumber = 0;
-	int guess;
-	boolean correct = false;
-
+	
 	public static void main(String[] args) {
 		Program p = new Program();
 		p.guessingGame();
+
 	}
 	
 	private int getRandom()
 	{
 		Random r = new Random();
-		int number=r.nextInt(1000);
+		int number=r.nextInt(500);
 		return number;
 	}
 	
 	private void guessingGame()
 	{
-		System.out.println("Guess a number between 0 and 1000");
+		System.out.println("Guess a number between 0 and 500");
+		boolean correct = false;
 		
 		do
 		{
+			int guess;
 			guess = scan.nextInt();
 			triesNumber++;
 			int guessNumber = getRandom();
@@ -37,7 +39,8 @@ public class Program {
 			{
 				correct = true;
 				System.out.println("The number was " + guessNumber);
-				playAgain();
+				break;
+				
 			}
 			else if (guess < guessNumber)
 			{
@@ -48,23 +51,26 @@ public class Program {
 				System.out.println("Your guess is too high.");
 			}
 			
-			if (triesNumber > 10)
+			if (triesNumber > 10){
 				System.out.println("Time's up!");
+				break;
+			}
+				
 			
 		} while (correct == false);
 		//System.out.println("You've exceeded the acceptable number of guesses.");
-		
+		playAgain();
 	}
 	
 	private void playAgain()
 	{
 		System.out.println("Would you like to play again? Y or N");
-		String play = scan.nextLine();
-		if (play == "y")
+		String play = scan.next();
+		if (play.equals("y"))
 		{
 			guessingGame();
 		}
-		else if (play == "n")
+		else if (play.equals("n"))
 		{
 			System.out.println("Bugger off, then!");
 		}

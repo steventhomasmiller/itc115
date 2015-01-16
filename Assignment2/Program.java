@@ -4,6 +4,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Program {
+	/* This class generates a random number, gets the user's guesses, 
+	 * keeps track of score, and prompts user to play again 
+	 * Steve Miller, 1/16/15 */
 	
 	Scanner scan = new Scanner(System.in);
 	
@@ -12,10 +15,9 @@ public class Program {
 	public static void main(String[] args) {
 		Program p = new Program();
 		p.guessingGame();
-
 	}
 	
-	private int getRandom()
+	private int getRandom() //gets random number
 	{
 		Random r = new Random();
 		int number=r.nextInt(500);
@@ -24,7 +26,7 @@ public class Program {
 	
 	private void guessingGame()
 	{
-		System.out.println("Guess a number between 0 and 500");
+		System.out.println("Guess a number between 0 and 500"); //prompts user
 		boolean correct = false;
 		
 		do
@@ -35,12 +37,12 @@ public class Program {
 			int guessNumber = getRandom();
 			
 
-			if (guess == guessNumber)
+			if (guess == guessNumber) //for correct guesses
 			{
 				correct = true;
 				System.out.println("The number was " + guessNumber);
 				System.out.println("Your total points: " + triesNumber);
-				break;
+				break; //ends the loop if correct
 				
 			}
 			else if (guess < guessNumber)
@@ -49,11 +51,11 @@ public class Program {
 			}
 			else if (guess > guessNumber)
 			{
-				System.out.println("Your guess is too high.");
+				System.out.println("Sorry, that guess is too high.");
 			}
 			
 			if (triesNumber > 10){
-				System.out.println("Time's up!");
+				System.out.println("Too many tries!");
 				break;
 			}
 				
@@ -67,13 +69,13 @@ public class Program {
 	{
 		System.out.println("Would you like to play again? Y or N");
 		String play = scan.next();
-		if (play.equalsIgnoreCase("y"))
+		if (play.equalsIgnoreCase("y")) //works for lower or upper case
 		{
-			guessingGame();
+			guessingGame(); //calls game again
 		}
 		else if (play.equalsIgnoreCase("n"))
 		{
-			System.out.println("Bugger off, then!");
+			System.out.println("Bugger off, then!"); //exits the game
 		}
 	}
 

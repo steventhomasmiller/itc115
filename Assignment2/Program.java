@@ -1,4 +1,4 @@
-package com.spconger.VehicleExample;
+package com.spconger.Assignment2;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -39,6 +39,7 @@ public class Program {
 			{
 				correct = true;
 				System.out.println("The number was " + guessNumber);
+				System.out.println("Your total points: " + triesNumber);
 				break;
 				
 			}
@@ -58,7 +59,7 @@ public class Program {
 				
 			
 		} while (correct == false);
-		//System.out.println("You've exceeded the acceptable number of guesses.");
+		
 		playAgain();
 	}
 	
@@ -66,11 +67,11 @@ public class Program {
 	{
 		System.out.println("Would you like to play again? Y or N");
 		String play = scan.next();
-		if (play.equals("y"))
+		if (play.equalsIgnoreCase("y"))
 		{
 			guessingGame();
 		}
-		else if (play.equals("n"))
+		else if (play.equalsIgnoreCase("n"))
 		{
 			System.out.println("Bugger off, then!");
 		}

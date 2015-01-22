@@ -53,7 +53,7 @@ public class Stats {
 	}
 	
 	//public methods
-	public int calculateBattingAverage()
+	public double calculateBattingAverage()
 	{
 		return getNumHits() / getNumTotalBats();
 	}

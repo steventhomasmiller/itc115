@@ -1,6 +1,8 @@
 package com.spconger.FormLayout;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton; //import all of these
 import javax.swing.JFrame;
@@ -38,10 +40,23 @@ public class FormLayout {
 		label1 = new JLabel("Enter your name: ");
 		textName = new JTextField(25);
 		button = new JButton("Click");
+		button.addActionListener(new ButtonListener());
+		
 		label2 = new JLabel();
 		panel1.add(label1);
 		panel1.add(textName);
 		panel1.add(button);
 		panel1.add(label2);
+	}
+	
+	private class ButtonListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			label2.setText("Hello " + textName.getText());
+		}
+		
 	}
 }

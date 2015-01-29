@@ -25,5 +25,7 @@ public class Word {
 	{
 		return getWord () + "--" + getDefinition();
 	}
+	
+	/* Suit and number for card assignment */
 
 }

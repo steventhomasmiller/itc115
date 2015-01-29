@@ -58,8 +58,8 @@ public class WordForm
 		  return borderPanel;
 	 }
 		 
-		 private JPanel createNewWordPanel()
-		 {
+	private JPanel createNewWordPanel()
+	{
 		  newWordPanel = new JPanel();
 		  newWordPanel.setLayout(new GridLayout(2,2));
 		  wordPrompt=new JLabel("Enter Word");
@@ -71,10 +71,10 @@ public class WordForm
 		  newWordPanel.add(defPrompt);
 		  newWordPanel.add(defText);
 		  return newWordPanel;
-		 }
+	}
 		 
-		 private JScrollPane createScrollPane()
-		 {
+	private JScrollPane createScrollPane()
+	{
 		  wordList = new JList(); //just a list box
 		  //add the selection listener to the list
 		  //wordlist.addListSelectionListener(new SelectionListener());
@@ -82,10 +82,10 @@ public class WordForm
 		  scrollPane.setBounds(20, 20, 100, 200);
 		  
 		  return scrollPane;
-		 }
+	}
 		 
-		 private JPanel createButtonPanel()
-		 {
+	private JPanel createButtonPanel()
+	{
 		  buttonPanel = new JPanel();
 		  buttonPanel.setLayout(new FlowLayout());
 		  addButton = new JButton("Add Word");
@@ -100,49 +100,49 @@ public class WordForm
 		  buttonPanel.add(exitButton);
 		  
 		  return buttonPanel;
-		 }
+	}
 		 
-		 private class AddButtonListener implements ActionListener
-		 {
-		  @Override
-		  public void actionPerformed(ActionEvent e) 
-		  {
-		   Word w = new Word();
-		   w.setWord(wordText.getText());
-		   w.setDefinition(defText.getText());
-		   tech.addWord(w);
-		   
-		   wordText.setText(""); //cleared out for new entry
-		   defText.setText("");
-		  }
-		  
-		 }
-		 
-		 private class GetWordsListener implements ActionListener
-		 
+	private class AddButtonListener implements ActionListener
 	{
-
 		  @Override
 		  public void actionPerformed(ActionEvent e) 
 		  {
-		   ArrayList<Word> words = tech.getWords();
-		   DefaultListModel model = new DefaultListModel();
-		   
-		   for(Word w: words)
-		   {
-		    model.addElement(w.toString());
-		   }
-		   wordList.setModel(model);
+			   Word w = new Word();
+			   w.setWord(wordText.getText());
+			   w.setDefinition(defText.getText());
+			   tech.addWord(w);
+			   
+			   wordText.setText(""); //cleared out for new entry
+			   defText.setText("");
 		  }
 		  
 	}
-		 private class ExitListener implements ActionListener
-		 {
+		 
+	private class GetWordsListener implements ActionListener
+		 
+	{
+		  @Override
+		  public void actionPerformed(ActionEvent e) 
+		  {
+			   ArrayList<Word> words = tech.getWords();
+			   DefaultListModel model = new DefaultListModel();
+			   
+			   for(Word w: words)
+			   {
+			    	model.addElement(w.toString());
+			   }
+			   	wordList.setModel(model);
+		  }
+		  
+	}
+	
+	private class ExitListener implements ActionListener
+	{
 		  @Override
 		  public void actionPerformed(ActionEvent e) 
 		  {
 		   System.exit(0);
 		  }
 		  
-		 }
-}
+	}
+} //ends class

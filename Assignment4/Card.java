@@ -2,8 +2,19 @@ package com.spconger.Assignment4;
 
 public class Card {
 	
-	private String suit;
-	private String rank;
+	private static String suit;
+	private static String rank;
+	
+	public Card(String suit, String rank)
+	{
+		this.suit = suit;
+		this.rank = rank;
+	}
+	
+	public Card()
+	{
+		
+	}
 	
 	public String getSuit()
 	{
@@ -26,9 +37,9 @@ public class Card {
 		
 	}
 	
-	public String toString()
+	public String getCard()
 	{
-		return getSuit() + getRank();
+		return getSuit() + " of " + getRank();
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.spconger.Assignment4;
+/*package com.spconger.Assignment4;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -32,12 +32,12 @@ public class CardForm
 	 private JButton getWordsButton;
 	 private JButton exitButton;
 	 
-	 private Deck tech; //match class name
+	 private Deck deck; //match class name
 	 
 	 public CardForm() //constructor
 	 {
 		  createFrame();
-		  tech = new Deck();
+		  deck = new Deck();
 	 }
 	 
 	 private void createFrame()
@@ -124,7 +124,7 @@ public class CardForm
 		  @Override
 		  public void actionPerformed(ActionEvent e) 
 		  {
-			   ArrayList<Word> words = tech.getWords();
+			   ArrayList<Word> words = deck.getWords();
 			   DefaultListModel model = new DefaultListModel();
 			   
 			   for(Word w: words)
@@ -146,3 +146,7 @@ public class CardForm
 		  
 	}
 } //ends class
+
+have button pull from the deck; pull five cards
+
+*/

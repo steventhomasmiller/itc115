@@ -11,6 +11,7 @@ public class Program {
 	{
 		Program p = new Program();
 		p.writeToFile();
+		p.readFromFile();
 	}
 	
 	@SuppressWarnings("unused")
@@ -25,6 +26,19 @@ public class Program {
 			wf.closeFile();
 		} catch (IOException e) 
 		{
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private void readFromFile()
+	{
+		ReadFile rf = new ReadFile("C:\\Temp\\myFile.txt");
+		String content;
+		try {
+			content = rf.getText();
+			System.out.println(content);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 	}

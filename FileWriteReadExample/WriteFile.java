@@ -1,46 +1,33 @@
 package com.spconger.FileWriteReadExample;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.PrintWriter;
 
-public class Program {
+public class WriteFile 
+{
+	private String path;
+	private PrintWriter writer;
 	
-	Scanner scan;
-	
-	public static void main(String[] args) 
+	public WriteFile(String path) throws IOException
 	{
-		Program p = new Program();
-		p.writeToFile();
-		p.readFromFile();
+		this.path=path;
+		createFile();
 	}
 	
-	@SuppressWarnings("unused")
-	private void writeToFile()
+	private void createFile() throws IOException
 	{
-		try {
-			scan = new Scanner(System.in);
-			WriteFile wf = new WriteFile("C:\\Temp\\myFile.txt");
-			System.out.println("Enter some text for the file: ");
-			String content = scan.nextLine();
-			wf.addText(content);
-			wf.closeFile();
-		} catch (IOException e) 
-		{
-			System.out.println(e.getMessage());
-		}
+		FileWriter outFile = new FileWriter(path, true); //create file at path; true appends to it
+		writer = new PrintWriter(outFile);
 	}
 	
-	private void readFromFile()
+	public void addText(String content)
 	{
-		ReadFile rf = new ReadFile("C:\\Temp\\myFile.txt");
-		String content;
-		try {
-			content = rf.getText();
-			System.out.println(content);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}
+		writer.println(content);		
 	}
-
+	
+	public void closeFile()
+	{
+		writer.close(); //the file must be closed
+	}
 }

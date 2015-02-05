@@ -1,46 +1,34 @@
 package com.spconger.FileWriteReadExample;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 
-public class Program {
+public class ReadFile 
+{
+	private String path;
 	
-	Scanner scan;
-	
-	public static void main(String[] args) 
+	public ReadFile(String path)
 	{
-		Program p = new Program();
-		p.writeToFile();
-		p.readFromFile();
+		this.path=path;
 	}
 	
-	@SuppressWarnings("unused")
-	private void writeToFile()
+	public String getText() throws IOException //stores what's in the file
 	{
-		try {
-			scan = new Scanner(System.in);
-			WriteFile wf = new WriteFile("C:\\Temp\\myFile.txt");
-			System.out.println("Enter some text for the file: ");
-			String content = scan.nextLine();
-			wf.addText(content);
-			wf.closeFile();
-		} catch (IOException e) 
+		String content=""; //empty content
+		FileInputStream fstream = new FileInputStream(path);
+		DataInputStream fileIn = new DataInputStream(fstream);
+		BufferedReader buff = new BufferedReader(new InputStreamReader(fileIn));
+		String lineIn;
+		while ((lineIn=buff.readLine())!=null) //as long as the reader is reading lines
 		{
-			System.out.println(e.getMessage());
+			content += (lineIn + "\n");
 		}
+		
+		return content;
+		
 	}
-	
-	private void readFromFile()
-	{
-		ReadFile rf = new ReadFile("C:\\Temp\\myFile.txt");
-		String content;
-		try {
-			content = rf.getText();
-			System.out.println(content);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}
-	}
-
 }

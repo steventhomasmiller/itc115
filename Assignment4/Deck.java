@@ -10,9 +10,29 @@ public class Deck
 	
 	private ArrayList<Card> cards;
 	
-	public cardDeck()
+	public Deck()
 	{
 		cards = new ArrayList<Card>();
+	}
+	
+	public ArrayList<Card> cardHand(int dealtHand);
+	{
+		ArrayList<Card> hand = new ArrayList<Card>();
+		
+		fillDeck();
+		
+		shuffle(cards);
+		
+		for (int i = 0; i < dealtHand; i++)
+		{
+			hand.add(cards.get(i));
+		}
+		
+		return hand;
+	}
+	public ArrayList<Card> getDeck()
+	{
+		return cards;
 	}
 	
 }

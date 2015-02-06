@@ -1,19 +1,19 @@
-package com.spconger.Assignment4;
+package com.spconger.Assignment4a;
 
-public class Card {
+public class Card 
+{
+	private String rank;
+	private String suit;
+		
 	
-	private static String suit;
-	private static String rank;
-	
-	public Card(String suit, String rank)
+	public String getRank()
 	{
-		this.suit = suit;
-		this.rank = rank;
+		return rank;
 	}
 	
-	public Card()
+	public void setRank(String rank)
 	{
-		
+		this.rank = rank;
 	}
 	
 	public String getSuit()
@@ -26,20 +26,8 @@ public class Card {
 		this.suit = suit;
 	}
 	
-	public String getRank()
+	public String toString()
 	{
-		return rank;
+		return getRank() + " of " + getSuit();
 	}
-	
-	public void setRank(String rank)
-	{
-		this.rank = rank;
-		
-	}
-	
-	public String getCard()
-	{
-		return getSuit() + " of " + getRank();
-	}
-
 }

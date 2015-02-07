@@ -15,7 +15,7 @@ public class Deck
 		cards = new ArrayList<Card>();
 	}
 	
-	public ArrayList<Card> cardHand(int dealtHand);
+	public ArrayList<Card> cardHand(int dealtHand)
 	{
 		ArrayList<Card> hand = new ArrayList<Card>();
 		
@@ -33,6 +33,17 @@ public class Deck
 	public ArrayList<Card> getDeck()
 	{
 		return cards;
+	}
+	
+	public void fillDeck()
+	{
+		for (String suit: Suits)
+		{
+			for (String rank: Ranks)
+			{
+				Card card = new Card();
+			}
+		}
 	}
 	
 }

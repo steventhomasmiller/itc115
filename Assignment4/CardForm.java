@@ -1,4 +1,4 @@
-package com.spconger.Assignment4;
+package com.spconger.Assignment4a;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,135 +18,112 @@ import javax.swing.JTextField;
 
 public class CardForm 
 {
+	private Deck deck;
+	
 	private JFrame frame;
-	 private JPanel borderPanel;
-	 private JPanel newWordPanel;
-	 private JPanel buttonPanel;
-	 private JScrollPane scrollPane;
-	 private JList wordList;
-	 private JLabel wordPrompt;
-	 private JTextField wordText;
-	 private JLabel defPrompt;
-	 private JTextField defText;
-	 private JButton addButton;
-	 private JButton getWordsButton;
-	 private JButton exitButton;
-	 
-	 private Deck deck; //match class name
-	 
-	 public CardForm() //constructor
-	 {
-		  createFrame();
-		  deck = new Deck();
-	 }
-	 
-	 private void createFrame()
-	 {
-		  frame = new JFrame();
-		  frame.setBounds(100, 100, 300, 300);
-		  frame.add(createBorderPanel());
-		  frame.setVisible(true);
-	 }
-	 
-	 private JPanel createBorderPanel()
-	 {
-		  borderPanel = new JPanel();
-		  borderPanel.setLayout(new BorderLayout());
-		  borderPanel.add(createNewWordPanel(), BorderLayout.NORTH);
-		  borderPanel.add(createScrollPane(),BorderLayout.CENTER);
-		  borderPanel.add(createButtonPanel(), BorderLayout.SOUTH);
-		  return borderPanel;
-	 }
-		 
-	private JPanel createNewWordPanel()
+	private JPanel borderPanel;
+	private JPanel greetingPanel;
+	private JPanel buttonPanel;
+	private JScrollPane scrollPane;
+	private JList cardList;
+	private JLabel greetingPrompt;
+	private JLabel cardsInHandPrompt;
+	private JTextField numberOfCardsText;
+	private JButton dealButton;
+	//private JButton getWordsButton;
+	private JButton exitButton;
+	
+	public CardForm()
 	{
-		  newWordPanel = new JPanel();
-		  newWordPanel.setLayout(new GridLayout(2,2));
-		  wordPrompt=new JLabel("Enter Word");
-		  wordText = new JTextField();
-		  defPrompt = new JLabel("Enter Definition");
-		  defText = new JTextField();
-		  newWordPanel.add(wordPrompt);
-		  newWordPanel.add(wordText);
-		  newWordPanel.add(defPrompt);
-		  newWordPanel.add(defText);
-		  return newWordPanel;
+		deck = new Deck();
+		createFrame();
 	}
-		 
+	
+	private void createFrame()
+	{
+		frame = new JFrame();
+		frame.setBounds(200, 200, 200, 200);
+		frame.add(createBorderPanel());
+		frame.setVisible(true);
+	}
+	
+	private JPanel createBorderPanel()
+	{
+		borderPanel = new JPanel();
+		borderPanel.setLayout(new BorderLayout());
+		borderPanel.add(createGreetingPanel(), BorderLayout.NORTH);
+		borderPanel.add(createScrollPane(), BorderLayout.CENTER);
+		borderPanel.add(createButtonPanel(), BorderLayout.SOUTH);
+		return borderPanel;
+	}
+	
+	private JPanel createGreetingPanel()
+	{
+		greetingPanel = new JPanel();
+		greetingPanel.setLayout(new GridLayout(2,2));
+		greetingPrompt = new JLabel("Welcome to ye olde card game.");
+		greetingPanel.add(greetingPrompt);
+		return greetingPanel;
+	}
+	
 	private JScrollPane createScrollPane()
 	{
-		  wordList = new JList(); //just a list box
-		  //add the selection listener to the list
-		  //wordlist.addListSelectionListener(new SelectionListener());
-		  scrollPane = new JScrollPane(wordList);
-		  scrollPane.setBounds(20, 20, 100, 200);
-		  
-		  return scrollPane;
+		cardList = new JList();
+		scrollPane = new JScrollPane(cardList);
+		scrollPane.setBounds(20, 20, 200, 350);
+		return scrollPane;
 	}
-		 
+	
 	private JPanel createButtonPanel()
 	{
-		  buttonPanel = new JPanel();
-		  buttonPanel.setLayout(new FlowLayout());
-		  addButton = new JButton("Add Word");
-		  addButton.addActionListener(new AddButtonListener());
-		  getWordsButton = new JButton("Get Words");
-		  getWordsButton.addActionListener(new GetWordsListener());
-		  exitButton = new JButton("Exit");
-		  exitButton.addActionListener(new ExitListener());
-		  
-		  buttonPanel.add(addButton);
-		  buttonPanel.add(getWordsButton);
-		  buttonPanel.add(exitButton);
-		  
-		  return buttonPanel;
-	}
-		 
-	private class AddButtonListener implements ActionListener
-	{
-		  @Override
-		  public void actionPerformed(ActionEvent e) 
-		  {
-			   Word w = new Word();
-			   w.setWord(wordText.getText());
-			   w.setDefinition(defText.getText());
-			   tech.addWord(w);
-			   
-			   wordText.setText(""); //cleared out for new entry
-			   defText.setText("");
-		  }
-		  
-	}
-		 
-	private class GetWordsListener implements ActionListener
-		 
-	{
-		  @Override
-		  public void actionPerformed(ActionEvent e) 
-		  {
-			   ArrayList<Word> words = deck.getWords();
-			   DefaultListModel model = new DefaultListModel();
-			   
-			   for(Word w: words)
-			   {
-			    	model.addElement(w.toString());
-			   }
-			   	wordList.setModel(model);
-		  }
-		  
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout());
+		
+		cardsInHandPrompt = new JLabel("Cards per hand: ");
+		numberOfCardsText = new JTextField(2);
+		
+		dealButton = new JButton("Deal cards: ");
+		dealButton.addActionListener(new DealButtonListener());
+		
+		exitButton = new JButton("Exit");
+		exitButton.addActionListener(new ExitListener());
+		
+		buttonPanel.add(cardsInHandPrompt);
+		buttonPanel.add(numberOfCardsText);
+		buttonPanel.add(dealButton);
+		buttonPanel.add(exitButton);
+		
+		return buttonPanel;
+		
 	}
 	
 	private class ExitListener implements ActionListener
 	{
-		  @Override
-		  public void actionPerformed(ActionEvent e) 
-		  {
-		   System.exit(0);
-		  }
-		  
+		public void actionPerformed(ActionEvent e)
+		{
+			System.exit(0);
+		}
 	}
+	
+	private class DealButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String cardsInHand = numberOfCardsText.getText();
+			int numberOfCards = Integer.parseInt(cardsInHand);
+			
+			ArrayList<Card> cards = deck.cardHand(numberOfCards);
+			
+			DefaultListModel model = new DefaultListModel();
+			
+			for (Card c: cards)
+			{
+				model.addElement(c.toString());
+			}
+			cardList.setModel(model);
+		}
+	}
+	
 } //ends class
-
-have button pull from the deck; pull five cards
 
 

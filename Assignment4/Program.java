@@ -1,12 +1,10 @@
-package com.spconger.Assignment4;
+package com.spconger.Assignment4a;
 
 public class Program {
 
 	public static void main(String[] args) 
 	{
-		//CardForm cf = new CardForm();
-		Deck myCoolDeckYo = new Deck();
-		myCoolDeckYo.getCards();
+		CardForm cf = new CardForm();
 	}
 
 }

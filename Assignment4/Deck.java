@@ -1,7 +1,8 @@
 package com.spconger.Assignment4a;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Collections;
+//import java.util.Random;
 
 public class Deck 
 {
@@ -42,8 +43,16 @@ public class Deck
 			for (String rank: Ranks)
 			{
 				Card card = new Card();
+				card.setSuit(suit);
+				card.setRank(rank);
+				cards.add(card);
 			}
 		}
+	}
+	
+	private void shuffle(ArrayList<Card> deck)
+	{
+		Collections.shuffle(deck);
 	}
 	
 }

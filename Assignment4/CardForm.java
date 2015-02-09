@@ -1,4 +1,4 @@
-/*package com.spconger.Assignment4;
+package com.spconger.Assignment4;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -149,4 +149,4 @@ public class CardForm
 
 have button pull from the deck; pull five cards
 
-*/
+

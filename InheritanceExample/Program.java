@@ -12,7 +12,14 @@ public class Program {
 		c.setRegistrationDate("2/9/2015");//ibid
 		
 		System.out.println(c.toString());
+		
+		HourlyEmployee he = new HourlyEmployee();
+		he.setDept("IT");
+		he.setName("George");
+		he.setEmployeeID(25);
+		he.setRateOfPay(5);
+		he.setHours(80);
+		he.getEmail("")
 	}
 
 }
-

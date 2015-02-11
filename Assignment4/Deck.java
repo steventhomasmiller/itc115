@@ -6,11 +6,15 @@ import java.util.Collections;
 
 public class Deck 
 {
+	/* This class stores 
+	 */
+	
 	final String Suits[] = { "hearts", "spades", "diamonds", "clubs" };
 	private String Ranks[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 	
 	private ArrayList<Card> cards;
 	
+	//constructor; must match class name
 	public Deck()
 	{
 		cards = new ArrayList<Card>();

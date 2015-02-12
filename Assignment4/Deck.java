@@ -6,7 +6,9 @@ import java.util.Collections;
 
 public class Deck 
 {
-	/* This class stores 
+	/* This class shuffles the deck and deals the new cards.
+	 * It also declares the suits and ranks values
+	 * Steve Miller, 2/3/15
 	 */
 	
 	final String Suits[] = { "hearts", "spades", "diamonds", "clubs" };
@@ -20,13 +22,13 @@ public class Deck
 		cards = new ArrayList<Card>();
 	}
 	
-	public ArrayList<Card> cardHand(int dealtHand)
+	public ArrayList<Card> cardHand(int dealtHand) //shows the hand the player is dealt
 	{
 		ArrayList<Card> hand = new ArrayList<Card>();
 		
 		fillDeck();
 		
-		shuffle(cards);
+		shuffle(cards); //shuffles the ranks and suits
 		
 		for (int i = 0; i < dealtHand; i++)
 		{
@@ -40,7 +42,7 @@ public class Deck
 		return cards;
 	}
 	
-	public void fillDeck()
+	public void fillDeck()//grabs the rank and suit of card dealt
 	{
 		for (String suit: Suits)
 		{
@@ -54,7 +56,7 @@ public class Deck
 		}
 	}
 	
-	private void shuffle(ArrayList<Card> deck)
+	private void shuffle(ArrayList<Card> deck)//shuffles the entire deck
 	{
 		Collections.shuffle(deck);
 	}

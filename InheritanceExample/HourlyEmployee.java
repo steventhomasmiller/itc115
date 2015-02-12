@@ -1,52 +1,46 @@
 package com.spconger.InheritanceExample;
 
-public class HourlyEmployee extends Employee //also does Person class
-{
+public class HourlyEmployee extends Employee{
+
 	private double rateOfPay;
 	private int hours;
-	private String status; //full or part time
+	private String status;
 	
-	//overridden abstract method
+	//overriden abstract method
 	@Override
-	public double calculateMonthlyPay() 
-	{
-		// TODO Auto-generated method stub
+	public double calculateMonthlyPay() {
+		
 		return getRateOfPay() * getHours();
 	}
 	
-	public String toString()
-	{
+	public String toString(){
 		String parentString = super.toString();
-		return parentString + ", Monthly Pay " + Double.toString(calculateMonthlyPay());
+		return parentString + ", Monthly Pay: " 
+				+ Double.toString(calculateMonthlyPay());
 	}
 
-	public double getRateOfPay() 
-	{
+	//public getters and setters
+	public double getRateOfPay() {
 		return rateOfPay;
 	}
 
-	public void setRateOfPay(double rateOfPay) 
-	{
+	public void setRateOfPay(double rateOfPay) {
 		this.rateOfPay = rateOfPay;
 	}
 
-	public int getHours() 
-	{
+	public int getHours() {
 		return hours;
 	}
 
-	public void setHours(int hours) 
-	{
+	public void setHours(int hours) {
 		this.hours = hours;
 	}
 
-	public String getStatus() 
-	{
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) 
-	{
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	

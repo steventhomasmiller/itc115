@@ -1,44 +1,31 @@
 package com.spconger.InheritanceExample;
 
-public abstract class Person //abstract = can't use class directly
-{
+public abstract class Person {
 	private String name;
 	private String email;
 	private String phone;
 	
-	public String getName() 
-	{
+	public String getName() {
 		return name;
 	}
-	
-	public void setName(String name) 
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getEmail() 
-	{
+	public String getEmail() {
 		return email;
 	}
-	
-	public void setEmail(String email) 
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getPhone() 
-	{
+	public String getPhone() {
 		return phone;
 	}
-	
-	public void setPhone(String phone) 
-	{
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	
-	public String toString()
-	{
+	public String toString(){
 		return getName() + ", " + getEmail() + ", " + getPhone();
 	}
-	
+
 }

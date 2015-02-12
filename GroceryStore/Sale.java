@@ -9,17 +9,23 @@ public class Sale implements ListOperations
 	
 	public double getTotalPrice()
 	{
+		double total=0;
+		for (Item i: basket)
+		{
+			total += i.getPrice();
+		}
 		
+		return total;
 	}
 	
 	public ArrayList<Item> getItems()
 	{
-		
+		return basket;
 	}
 	
 	public double calculateTax()
 	{
-		
+		return getTotalPrice() * TAXPERCENT;
 	}
 
 	@Override

@@ -18,6 +18,11 @@ import javax.swing.JTextField;
 
 public class CardForm 
 {
+	/* This class is the visual interface through which the game is played.
+	 * It builds the form and performs the actions
+	 * Steve Miller, 2/5/15
+	 */
+	
 	private Deck deck;
 	
 	private JFrame frame;
@@ -33,16 +38,16 @@ public class CardForm
 	//private JButton getWordsButton;
 	private JButton exitButton;
 	
-	public CardForm()
+	public CardForm() //constructor
 	{
 		deck = new Deck();
 		createFrame();
 	}
 	
-	private void createFrame()
+	private void createFrame() //creates the program window and its sizes
 	{
 		frame = new JFrame();
-		frame.setBounds(200, 200, 200, 200);
+		frame.setBounds(500, 500, 500, 500);
 		frame.add(createBorderPanel());
 		frame.setVisible(true);
 	}
@@ -57,11 +62,11 @@ public class CardForm
 		return borderPanel;
 	}
 	
-	private JPanel createGreetingPanel()
+	private JPanel createGreetingPanel() //displays the top of the page
 	{
 		greetingPanel = new JPanel();
 		greetingPanel.setLayout(new GridLayout(2,2));
-		greetingPrompt = new JLabel("Welcome to ye olde card game.");
+		greetingPrompt = new JLabel("     Welcome to ye olde card game.");
 		greetingPanel.add(greetingPrompt);
 		return greetingPanel;
 	}
@@ -70,11 +75,11 @@ public class CardForm
 	{
 		cardList = new JList();
 		scrollPane = new JScrollPane(cardList);
-		scrollPane.setBounds(20, 20, 200, 350);
+		scrollPane.setBounds(500, 500, 500, 500);
 		return scrollPane;
 	}
 	
-	private JPanel createButtonPanel()
+	private JPanel createButtonPanel() //where the buttons reside
 	{
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
@@ -82,7 +87,7 @@ public class CardForm
 		cardsInHandPrompt = new JLabel("Cards per hand: ");
 		numberOfCardsText = new JTextField(2);
 		
-		dealButton = new JButton("Deal cards: ");
+		dealButton = new JButton("Deal cards!!!");
 		dealButton.addActionListener(new DealButtonListener());
 		
 		exitButton = new JButton("Exit");
@@ -97,7 +102,7 @@ public class CardForm
 		
 	}
 	
-	private class ExitListener implements ActionListener
+	private class ExitListener implements ActionListener //the exiter
 	{
 		public void actionPerformed(ActionEvent e)
 		{
@@ -107,7 +112,7 @@ public class CardForm
 	
 	private class DealButtonListener implements ActionListener
 	{
-		public void actionPerformed(ActionEvent e)
+		public void actionPerformed(ActionEvent e)//performs the action
 		{
 			String cardsInHand = numberOfCardsText.getText();
 			int numberOfCards = Integer.parseInt(cardsInHand);

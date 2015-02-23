@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 public class Display 
 {
-	final String FILEPATH ="C:\\temp\\textfile.txt";
+	final String FILEPATH ="Desktop\\myfile.rft"; //worded this way for Mac.
 	
 	private JFrame frame;
 	private JPanel borderPanel;

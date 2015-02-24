@@ -20,7 +20,12 @@ import javax.swing.JTextField;
 
 public class Display 
 {
-	final String FILEPATH ="Desktop\\myfile.rft"; //worded this way for Mac.
+	/* This class creates the form and provides buttons 
+	 * to write and read to the files
+	 * Steve Miller, 2/20/15
+	 */
+	
+	final String FILEPATH ="/Users/stevemiller/Desktop/myFile.txt"; //worded this way for Mac.
 	
 	private JFrame frame;
 	private JPanel borderPanel;
@@ -33,31 +38,31 @@ public class Display
 	private JButton saveButton;
 	private JButton exitButton;
 	
-	public Display()
+	public Display() //constructor
 	{
 		createFrame();
-		
 	}
 	
 	private void createFrame()
 	{
 		frame = new JFrame();
-		frame.setBounds(500, 500, 500, 500);
+		frame.setBounds(500, 500, 500, 500); //good to have symmetry
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);  //closes program when user exits
 		frame.add(createBorderPanel());
 		frame.setVisible(true);
 	}
 	
-	private JPanel createBorderPanel()
+	private JPanel createBorderPanel() //creates the panels
 	{
 		borderPanel = new JPanel();
 		borderPanel.setLayout(new BorderLayout());
 		borderPanel.add(createGreetingPanel(), BorderLayout.NORTH);
-		borderPanel.add(createButtonPanel(), BorderLayout.CENTER);
+		borderPanel.add(createTextArea(), BorderLayout.CENTER);
 		borderPanel.add(createButtonPanel(), BorderLayout.SOUTH);
 		return borderPanel;
 	}
 	
-	private JPanel createGreetingPanel()
+	private JPanel createGreetingPanel() //ye olde welcomer
 	{
 		greetingPanel = new JPanel();
 		greetingPanel.setLayout(new GridLayout(2,2));
@@ -67,7 +72,7 @@ public class Display
 	}
 	
 	
-	private JScrollPane createTextArea()
+	private JScrollPane createTextArea() //creates scroll pane
 	{
 		textArea = new JTextArea();
 		scrollPane = new JScrollPane(textArea);
@@ -75,7 +80,7 @@ public class Display
 		return scrollPane;
 	}
 	
-	private JPanel createButtonPanel()
+	private JPanel createButtonPanel() //creates the buttons
 	{
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
@@ -89,6 +94,7 @@ public class Display
 		exitButton = new JButton("Exit");
 		exitButton.addActionListener(new ExitButtonListener());
 		
+		//adds the buttons
 		buttonPanel.add(openButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(exitButton);
@@ -96,7 +102,7 @@ public class Display
 		return buttonPanel;		
 	}
 	
-	private class OpenButtonListener implements ActionListener
+	private class OpenButtonListener implements ActionListener //opens text file
 	{
 		@Override
 		public void actionPerformed(ActionEvent e)
@@ -117,7 +123,7 @@ public class Display
 		}
 	}
 	
-	private class SaveButtonListener implements ActionListener
+	private class SaveButtonListener implements ActionListener //adds text to the file
 	{
 		@Override
 		public void actionPerformed(ActionEvent e)
@@ -138,7 +144,7 @@ public class Display
 		}
 	}
 	
-	private class ExitButtonListener implements ActionListener
+	private class ExitButtonListener implements ActionListener //exits program
 	{
 		@Override
 		public void actionPerformed(ActionEvent e)

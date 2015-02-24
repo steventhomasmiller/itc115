@@ -6,6 +6,10 @@ import java.io.PrintWriter;
 
 public class WriteFile 
 {
+	/* This class establishes the path to the file
+	Steve Miller, 2/10/15
+	*/
+	
 	private String path;
 	private PrintWriter writer;
 	

@@ -1,6 +1,13 @@
 package com.spconger.Assignment7;
 
+import acm.program.GraphicsProgram;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import acm.graphics.GLabel;
+import acm.graphics.GObject;
+import acm.graphics.GOval;
+import acm.graphics.GRect;
+import acm.util.RandomGenerator;
 
 import acm.program.GraphicsProgram; //I'll have to input this in the school's computers
 

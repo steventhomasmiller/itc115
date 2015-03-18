@@ -6,28 +6,38 @@ import acm.graphics.GOval;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
-public class assignment7 extends GraphicsProgram
+
+public class assignment7-2 extends GraphicsProgram
 {
+
+	/*
+	This class creates everything we need for the brick breaker game.
+	 */
+
 	// Constants for Applet:
 	public static final int APP_WIDTH = 400;
 	public static final int APP_HEIGHT = 600;
+
 	// Constants for Brick:
 	public static final int SEPARATION = 4;
 	public static final int BRICK_WIDTH = (APP_WIDTH - (SEPARATION * 10)) / 10;
 	public static final int NUM_BRICK_ROWS = 10;
-	public static final int NUM_BRICK_COLUMS = 10;
+	public static final int NUM_BRICK_COLUMNS = 10;
 	public static final int BRICK_HEIGHT = 8;
 	public static final int BRICK_Y_OFFSET = 70;
+
 	// Constants for paddle
 	public static final int PADDLE_Y_OFFSET = 30;
 	public static final int PADDLE_WIDTH = 60;
 	public static final int PADDLE_HEIGHT = 10;
 	public static final int PADDLE_MOVE = 6;
+
 	// Constants for Ball:
 	public static final int BALL_RADIUS = 10;
 	public static final int BALL_START_X = (APP_WIDTH - BALL_RADIUS * 2) / 2;
 	public static final int BALL_START_Y = (APP_HEIGHT - BALL_RADIUS * 2) / 2;
-	// making how many times you can play one game
+
+	// Sets how many times you can play the game
 	public int gameTurns = 3;
 	public int gameScore = 0;
 	private double vx, vy;
@@ -35,12 +45,13 @@ public class assignment7 extends GraphicsProgram
 	private GRect brick;
 	private GOval ball;
 	private GObject collider;
-	public void run()// implements the Runnable interface
+	
+	public void run() // implements the Runnable interface
 	{
 		gameSetup();
-		// gamePlay();
 		moveBall();
 	}
+
 	public void gameSetup()
 	{
 		setApplet();
@@ -51,6 +62,7 @@ public class assignment7 extends GraphicsProgram
 		addKeyListeners();
 		getMouseListeners();
 	}
+
 	public void gamePlay()
 	{
 		do
@@ -70,7 +82,8 @@ public class assignment7 extends GraphicsProgram
 	{
 		setSize(APP_WIDTH, APP_HEIGHT);
 	}
-	// making a Brick:
+
+	// makes the brick:
 	public void makeBrick(int x, int y, Color color)
 	{
 		brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
@@ -78,21 +91,23 @@ public class assignment7 extends GraphicsProgram
 		brick.setFilled(true);
 		add(brick);
 	}
-	// making bricks 10rows, 10colums and 2rows each coloring
+
+	// making bricks 10rows, 10columns and 2rows each coloring
 	public void makeBricks()
 	{
 		Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN };
-		// making bricks 10rows, 10colums
+		// making bricks 10rows, 10columns
 		for (int row = 0; row < NUM_BRICK_ROWS; row++)
 		{
-			for (int col = 0; col < NUM_BRICK_COLUMS; col++)
+			for (int col = 0; col < NUM_BRICK_COLUMNS; col++)
 			{
 				makeBrick((BRICK_WIDTH + SEPARATION) * col, BRICK_Y_OFFSET + (BRICK_HEIGHT + SEPARATION) * row, colors[row / 2]);
-				// 2rows each coloring
+				// 2 rows each coloring
 			}
 		}
 	}
-	// making a Paddle:
+	
+	// make the paddle:
 	public void makePaddle()
 	{
 		paddle = new GRect((APP_WIDTH - PADDLE_WIDTH) / 2, APP_HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
@@ -100,7 +115,8 @@ public class assignment7 extends GraphicsProgram
 		paddle.setFilled(true);
 		add(paddle);
 	}
-	// making a Ball:
+
+	// make the ball:
 	public void makeBall()
 	{
 		ball = new GOval(BALL_START_X, BALL_START_Y, BALL_RADIUS * 2, BALL_RADIUS * 2);
@@ -108,7 +124,8 @@ public class assignment7 extends GraphicsProgram
 		ball.setFilled(true);
 		add(ball);
 	}
-	// moving paddle;
+
+	// move the paddle;
 	public void keyPressed(KeyEvent e)
 	{
 		switch (e.getKeyCode()) {
@@ -135,6 +152,7 @@ public class assignment7 extends GraphicsProgram
 			vx = -vx;
 		}
 	}
+
 	private void moveBall()
 	{
 		initialBallMovement();
@@ -146,11 +164,13 @@ public class assignment7 extends GraphicsProgram
 		}
 		gameTurns--;
 	}
+
 	private void checkForCollision()
 	{
 		bounceBallWithWall();
 		establishBallCorners();
 	}
+
 	public void bounceBallWithWall()
 	{
 		if (ball.getX() + BALL_RADIUS < 0 || ball.getX() + BALL_RADIUS > APP_WIDTH)
@@ -164,6 +184,7 @@ public class assignment7 extends GraphicsProgram
 			newTurn();
 		}
 	}
+
 	private void establishBallCorners()
 	{
 		if (checkCollisionPoints(ball.getX(), ball.getY()))
@@ -175,6 +196,7 @@ public class assignment7 extends GraphicsProgram
 		if (checkCollisionPoints((ball.getX() + BALL_RADIUS * 2), (ball.getY() + BALL_RADIUS * 2)))
 			return;
 	}
+
 	public boolean checkCollisionPoints(double x, double y)
 	{
 		collider = getElementAt(x, y);
@@ -194,10 +216,12 @@ public class assignment7 extends GraphicsProgram
 			return true;
 		}
 	}
+
 	public void gameWon()
 	{
 		removeAll();
 	}
+
 	public void gameLost()
 	{
 		removeAll();

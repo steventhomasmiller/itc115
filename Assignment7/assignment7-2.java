@@ -9,9 +9,13 @@ import acm.util.RandomGenerator;
 
 public class assignment7-2 extends GraphicsProgram
 {
-
 	/*
 	This class creates everything we need for the brick breaker game.
+	It sets the brick height, width and colors, and also establishes the brick rows.
+	This also creates the ball and its components (such as shape, size, starting point and velocity).
+	Further, it sets boundaries for the game, as well as keeps the user's score.
+	Steve Miller
+	3/18/15
 	 */
 
 	// Constants for Applet:

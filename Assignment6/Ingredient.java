@@ -2,11 +2,17 @@ package com.spconger.Assignment6;
 
 public class Ingredient extends Item 
 {
+	/*
+	This class gets the nutrition facts for each recipe item
+	*/
+	
 	private String unitSize;
 	private double calories;
 	private double fat;
 	private double protein;
 	private double carbs;
+	
+	//Getters and setters
 	
 	public String getUnitSize() 
 	{

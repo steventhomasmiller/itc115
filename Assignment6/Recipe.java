@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 public class Recipe extends Item
 {
+	/* 
+	This class adds items and ingredients for each item.
+	*/
 	private ArrayList<Item> ingredients;
 	private String instructions;
 	
-	public Recipe()
+	public Recipe() //constructor
 	{
 		ingredients = new ArrayList<Item>();
 	}
@@ -21,6 +24,13 @@ public class Recipe extends Item
 	{
 		this.instructions = instructions;
 	}
+	
+	@Override
+	public void addItem(Item i) 
+	{
+		ingredients.add((Ingredient) i);
+	}
+
 	
 	@Override
 	public void editItem(Item i)

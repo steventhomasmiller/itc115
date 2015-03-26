@@ -1,4 +1,4 @@
-package com.emilyshine.Assignment_6;
+package com.spconger.Assignment6;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

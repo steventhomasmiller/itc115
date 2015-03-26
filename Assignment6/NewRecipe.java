@@ -18,25 +18,27 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class NewRecipe {
+	/*
+	This class allows the user to submit the recipe ingredients and clears the form.
+	Steve Miller, 3/26/15
+	*/
 
-	// ***** GLOBAL OBJECT DECLARATIONS *****
-
-	// frame
+	// declares the frame
 	private JFrame frame;
 
 	private JPanel borderPanel;
-	private JPanel welcomePanel; // north
+	private JPanel welcomePanel;
 	private JPanel headingPanel;
 	private JPanel mainMenuPanel;
 
-	private JPanel southernPanel; // south
-	private JPanel instructionsPanel; // south - 1
-	private JPanel submitPanel; // south - 2
-	private JPanel messagePanel; // south - 3
+	private JPanel southernPanel; 
+	private JPanel instructionsPanel;
+	private JPanel submitPanel;
+	private JPanel messagePanel;
 
-	private JPanel mainPanel; // center
-	private JPanel recipePanel; // center - 1
-	private JPanel ingredientPanel; // center - 2
+	private JPanel mainPanel; 
+	private JPanel recipePanel; 
+	private JPanel ingredientPanel; 
 
 	// labels
 	private JLabel spacer;
@@ -82,54 +84,41 @@ public class NewRecipe {
 	private Recipe r;
 	private Recipes recipes;
 
-	// ***** CONSTRUCTOR *****
-
-	public NewRecipe() {
+	public NewRecipe() //constructor 
+	{
 		recipes = new Recipes();
 		createFrame();
 	}
 
-	// ***** PRIVATE METHODS *****
-	// creates the window/frame
-	private void createFrame() {
-
-		// instantiates frame as a new JFrame
+	private void createFrame() //creates the frame
+	{
 		frame = new JFrame();
-
-		// create the size of the frame
-		// x, y, width, height
 		frame.setBounds(50, 50, 800, 700);
-
-		// if you close the window, it will stop the program
+		
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-
-		// add the panel to this frame
+		
 		frame.add(createBorderPanel());
 		frame.setVisible(true);
 
-	} // end createFrame()
+	} 
 
-	// creates the container for all the panels
-	private JPanel createBorderPanel() {
+	
+	private JPanel createBorderPanel() //creates panels
+	{
 		borderPanel = new JPanel();
 		borderPanel.setLayout(new BorderLayout());
 		borderPanel.add(createWelcomePanel(), BorderLayout.NORTH);
 		borderPanel.add(createMainPanel(), BorderLayout.CENTER);
 		borderPanel.add(createSouthernPanel(), BorderLayout.SOUTH);
 		return borderPanel;
-	} // end createBorderPanel()
-
-	// NORTH
-	// creates the top-most part of the container
-	// displays a welcome message and provides the user
-	// with two buttons: add (which triggers the newRecipe panel)
-	// and open (which triggers the openRecipe panel);
-	private JPanel createWelcomePanel() {
+	}
+	
+	private JPanel createWelcomePanel() //north container
+	{
 
 		welcomePanel = new JPanel();
 		welcomePanel.setLayout(new GridLayout(2, 1));
-
-		// 1) THE HEADING PANEL 
+ 
 		headingPanel = new JPanel();
 		headingPanel.setLayout(new FlowLayout());
 
@@ -138,7 +127,6 @@ public class NewRecipe {
 
 		headingPanel.add(header);
 
-		// 2) MENU PANEL
 		mainMenuPanel = new JPanel();
 		mainMenuPanel.setLayout(new FlowLayout());
 
@@ -151,16 +139,15 @@ public class NewRecipe {
 		mainMenuPanel.add(openButton);
 		mainMenuPanel.add(exitButton);
 
-		// ADD THE TWO PANELS TO THE WELCOME PANEL
 		welcomePanel.add(headingPanel);
 		welcomePanel.add(mainMenuPanel);
 
 		return welcomePanel;
 
-	} // end createWelcomePanel() ------ NORTH
+	} 
 
-	// CENTER CONTAINER
-	private JPanel createMainPanel() {
+	private JPanel createMainPanel() //center container
+	{
 
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new GridLayout(1, 3));
@@ -171,26 +158,24 @@ public class NewRecipe {
 
 		return mainPanel;
 
-	} // end createMainPanel()
+	} 
 
-	// CENTER-LEFT
-	private JPanel createInstructionsPanel() {
 
-		// this is where the user enters the recipe name and instructions
+	private JPanel createInstructionsPanel() //left of center
+	{
 		instructionsPanel = new JPanel();
 		instructionsPanel.setLayout(new FlowLayout());
 
-		nameHeadline = new JLabel ("1. Add Name and Instructions.");
+		nameHeadline = new JLabel ("1. Add recipre name and instructions.");
 		nameHeadline.setFont(new Font("Sans Serif", Font.BOLD, 15));
 	
 		nameLabel = new JLabel("Recipe Name: ");
 		namePrompt = new JTextField(10);
 
-		instructionsLabel = new JLabel("Enter the recipe instructions: ");
+		instructionsLabel = new JLabel("Enter recipe instructions: ");
 		instructionsBox = new JTextArea(10, 20);
-		submitInstructionsButton = new JButton("Submit Name and Instructions");
-		submitInstructionsButton
-				.addActionListener(new SubmitInstructionsButtonListener());
+		submitInstructionsButton = new JButton("Submit");
+		submitInstructionsButton.addActionListener(new SubmitInstructionsButtonListener());
 
 		instructionsPanel.add(nameHeadline);
 		instructionsPanel.add(nameLabel);
@@ -203,22 +188,23 @@ public class NewRecipe {
 
 	} // end createRecipePanel()
 
-	// CENTER-CENTER
-	private JPanel createIngredientPanel() {
+	
+	private JPanel createIngredientPanel() //true center
+	{
 
 		ingredientPanel = new JPanel();
 		ingredientPanel.setLayout(new FlowLayout());
 
-		ingredientHeadline = new JLabel("2. Add Each Ingredient");
-		ingredientHeadline.setFont(new Font("Sans Serif", Font.BOLD, 15));
+		ingredientHeadline = new JLabel("2. Add ingredients");
+		ingredientHeadline.setFont(new Font("Sans Serif", Font.BOLD, 16));
 
 		spacer = new JLabel("                       ");
-		ingredientName = new JLabel("Ingredient Name: ");
-		unitSizeLabel = new JLabel("Enter Unit Size: ");
-		caloriesLabel = new JLabel("Enter Calories: ");
-		fatLabel = new JLabel("Enter Fat: ");
-		proteinLabel = new JLabel("Enter Protein: ");
-		carbsLabel = new JLabel("Enter Carbs: ");
+		ingredientName = new JLabel("Name: ");
+		unitSizeLabel = new JLabel("Unit Size: ");
+		caloriesLabel = new JLabel("alories: ");
+		fatLabel = new JLabel("Fat: ");
+		proteinLabel = new JLabel("Protein: ");
+		carbsLabel = new JLabel("Carbs: ");
 
 		ingredientNamePrompt = new JTextField(8);
 		unitSizeTextField = new JTextField(9);
@@ -230,7 +216,7 @@ public class NewRecipe {
 		addIngredientButton = new JButton("Add Ingredient");
 		addIngredientButton.addActionListener(new AddIngredientButtonListener());
 
-		// add components to the ingredient panel
+		// adds to the ingredient panel
 		ingredientPanel.add(ingredientHeadline);
 		ingredientPanel.add(spacer);
 		ingredientPanel.add(ingredientName);
@@ -252,11 +238,12 @@ public class NewRecipe {
 	} // end createIngredientPanel()
 
 	// CENTER-RIGHT
-	private JPanel createRecipePanel() {
+	private JPanel createRecipePanel() 
+	{
 
 		recipePanel = new JPanel();
 		recipePanel.setLayout(new FlowLayout());
-		recipeHeadline = new JLabel("Your Recipe is Below ");
+		recipeHeadline = new JLabel("See this recipe: ");
 		recipeHeadline.setFont(new Font("Sans Serif", Font.BOLD, 15));
 
 		displayNameLabel = new JLabel();
@@ -270,11 +257,10 @@ public class NewRecipe {
 
 		return recipePanel;
 
-	} // end createRecipePanel()
-
-	// SOUTH
-	// the message panel displays confirmation messages for the user
-	private JPanel createSouthernPanel() {
+	} 
+	
+	private JPanel createSouthernPanel() //south panel
+	{
 
 		southernPanel = new JPanel();
 		southernPanel.setLayout(new GridLayout(3, 1));
@@ -283,7 +269,7 @@ public class NewRecipe {
 		submitPanel = new JPanel();
 		submitPanel.setLayout(new FlowLayout());
 		submitLabel = new JLabel("                                             "
-				+ "                         3. Upload Recipe to Cookbook.");
+				+ "                3. Upload Recipe to Cookbook.");
 		submitLabel.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		uploadRecipeButton = new JButton("Upload Recipe");
 		uploadRecipeButton.addActionListener(new UploadRecipeListener());
@@ -301,58 +287,41 @@ public class NewRecipe {
 		southernPanel.add(messagePanel);
 
 		return southernPanel;
-	} // end messagePanel() ----- SOUTH
-
-	/* ********* EVENT HANDLERS & INTERFACES ******** */
-
-	// OPEN BUTTON
-	// this button will open the LookupRecipe display/frame
-	private class OpenButtonListener implements ActionListener {
+	} 
+	private class OpenButtonListener implements ActionListener //opens recipe display panel
+	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			/*
-			 * THIS OPENS A NEW FRAME... calls the LookupRecipe constructor and
-			 * passes Recipes class
-			 */
-
+		public void actionPerformed(ActionEvent e) 
+		{
 			LookupRecipe lr = new LookupRecipe(recipes);
 			
-		} // end actionPerformed
+		}
 
-	} // end OpenButtonListener class
+	} 
 
-	// EXIT BUTTON
-	// action for the exit button, closes the frame
-	private class ExitButtonListener implements ActionListener {
+
+	private class ExitButtonListener implements ActionListener //closes frame 
+	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			// closes the frame and ends the program
+		public void actionPerformed(ActionEvent e) 
+		{
 			System.exit(0);
-		} // end actionPerformed()
+		} 
 
 	} // end ExitButtonListener class
 
-	// ADD INGREDIENT BUTTON
-	// adds ingredient item to the recipe
-	private class AddIngredientButtonListener implements ActionListener {
+
+	private class AddIngredientButtonListener implements ActionListener //adds ingredient to item
+	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*
-			 * 
-			 * 1. adds ingredient to recipe, 2. clears the form, 3. updates the
-			 * Recipe panel
-			 */
 
-			// Creates ingredient
-			Ingredient i = new Ingredient();
-			
-			// set fields to i
-			i.setName(ingredientNamePrompt.getText());
+			Ingredient i = new Ingredient(); //creates ingredient
 
+			i.setName(ingredientNamePrompt.getText());	
 			i.setUnitSize(unitSizeTextField.getText());
 
 			// converts text to double, then set the double
@@ -367,75 +336,63 @@ public class NewRecipe {
 
 			double carb = Double.parseDouble(carbsTextField.getText());
 			i.setCalories(carb);
-
-			// add ingredient to recipe
 			r.addItem(i);
 			
-			// clear out for new entry
+			// clears the way for a new recipe
 			ingredientNamePrompt.setText("");
 			unitSizeTextField.setText("");
 			caloriesTextField.setText("");
 			fatTextField.setText("");
 			proteinTextField.setText("");
 			carbsTextField.setText("");
-			
-			// update center-right panel with ingredient (optional)
-			
-			
-			// success message
-			messageLabel.setText("An ingredient has been added to " + r.getName() + ".");
+	
+			messageLabel.setText("A NEW ingredient has been added to " + r.getName() + ".");
 
-		} // end actionPerformed()
+		} 
 
-	} // end AddIngredientButtonListener class
+	} 
 
-	// SUBMIT RECIPE NAME AND INSTRUCTIONS BUTTON
-	private class SubmitInstructionsButtonListener implements ActionListener {
-
+	private class SubmitInstructionsButtonListener implements ActionListener //submits recipe
+	{
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) 
+		{
 			r = new Recipe();
-			// add the Recipe (r) properties
 			r.setName(namePrompt.getText());
-			r.setInstructions(instructionsBox.getText()); // get the instructions
+			r.setInstructions(instructionsBox.getText());
 															
 			// success message
-			messageLabel.setText("Recipe '" + r.getName()
+			messageLabel.setText("A recipe '" + r.getName()
 					+ "' has been created.");
 
-			// display in center right panel
 			displayNameLabel.setText(r.getName());
 			displayInstructionsLabel.setText(r.getInstructions());
 
-		} // end actionPerformed()
+		} 
 
-	} // end SubmitInstructionsButtonListener class
+	}
 
-	// UPLOAD RECIPE BUTTON
-	// This saves the recipe to list of recipes by saving to Recipes class
-	private class UploadRecipeListener implements ActionListener {
+	private class UploadRecipeListener implements ActionListener //saves recipe to list
+	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			// 1 Submit recipe r to Recipes
+		public void actionPerformed(ActionEvent e) 
+		{
 			recipes.addItem(r);
 
-			// clear out for new entry
 			namePrompt.setText("");
 			instructionsBox.setText("");
 
-			// success message
-			messageLabel.setText("Recipe has been uploaded.");
+			messageLabel.setText("Recipe has been stored in the highly secure recipe databank.");
 			
-			// temp array list and set equal to all recipes in recipe list object
 			ArrayList<Recipe> cookbook = recipes.getRecipeList();
-			// loop through each recipe in our cookbook variable
+	
 			for (Item r : cookbook){
 				System.out.println(r.getName());
 			}
 
-		} // end actionPerformed()
+		} 
 
-	} // end SubmitInstructionsButtonListener class
+	} 
 
-} // end NewRecipe class
+} 

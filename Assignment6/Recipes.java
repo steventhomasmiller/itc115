@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class Recipes implements ManageItems
 {
+	/* 
+	This class uses and (perhaps) overrides methods from previous classes
+	*/
+	
 	private ArrayList<Recipe> recipeList;
 	
 	public Recipes()//constructor
@@ -19,11 +23,11 @@ public class Recipes implements ManageItems
 	@Override
 	public void addItem(Item i)
 	{
-		recipeList.add((Recipe) i);
+		recipeList.add((Recipe) i);//adds recipe to array
 	}
 	
 	@Override
-	public void editItem(Item i)
+	public void editItem(Item i)//edits the item if need be
 	{
 		for(Item recipe : recipeList)
 		{
@@ -35,7 +39,7 @@ public class Recipes implements ManageItems
 	}
 	
 	@Override
-	public void removeItems(Item i)
+	public void removeItems(Item i) //removes the item, if need be
 	{
 		for (Item recipe : recipeList)
 		{

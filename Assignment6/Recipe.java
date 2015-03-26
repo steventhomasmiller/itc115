@@ -21,4 +21,17 @@ public class Recipe extends Item
 	{
 		this.instructions = instructions;
 	}
+	
+	@Override
+	public void editItem(Item i)
+	{
+		
+	}
+	
+	@Override
+	public void removeItem(Item i)
+	{
+		
+	}
+
 }
